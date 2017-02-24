@@ -2,13 +2,6 @@
 public class Artifact {
 	
 	String artifactID;
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Artifact a = new Artifact();
-		
-		System.out.println(a.createID("HELLO WORLD"));
-	}
 	
 	public String createID(String content) {
 		
@@ -34,5 +27,13 @@ public class Artifact {
 		
 		return output;
 	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Artifact a = new Artifact();
+		
+		System.out.println(a.createID("HELLO WORLD"));
+	}
+
 
 }
