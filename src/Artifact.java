@@ -1,14 +1,16 @@
 
 public class Artifact {
+	
+	String artifactID;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Artifact a = new Artifact();
 		
-		System.out.println(a.createAID("HELLO WORLD"));
+		System.out.println(a.createID("HELLO WORLD"));
 	}
 	
-	public String createAID(String content) {
+	public String createID(String content) {
 		
 		int total = 0;
 		int length = content.length();
