@@ -8,10 +8,17 @@ public class Artifact {
 	
 	String artifactID;
 	File sourceFile;
+	File destination;
 	
-	public Artifact(File f) {
-		sourceFile = f;
+	public Artifact(File src, File dest) {
+		sourceFile = src;
 		setID();
+		destination = dest;
+		createLeafFolder();
+	}
+	
+	public boolean createLeafFolder() {
+		return new File(destination.getName() + File.separator + sourceFile.getName()).mkdir();
 	}
 	
 	public void setID() {
@@ -65,10 +72,11 @@ public class Artifact {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		File test = new File("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project", "text.txt");
-		Artifact a = new Artifact(test);
-		
-		
+		File dest = new File ("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project\\testing");
+		Artifact a = new Artifact(test, dest);
+
 		System.out.println(a.getID());
+		System.out.println(a.destination.getAbsolutePath());
 		
 		//System.out.println(a.createID("HELLO WORLD"));
 	}
