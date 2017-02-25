@@ -3,14 +3,18 @@ import java.text.SimpleDateFormat;
 
 public class Repository {
 	
+	String path;
+	
 	public Repository(String[] args) {
+		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
+				.format(new java.util.Date());
+		path = args[1];
 		copyDirectory(new File(args[0]), new File (args[1]));
+		Manifest m = new Manifest(path);
 	}
 	
 	public void create() {
-		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
-				.format(new java.util.Date());
-		System.out.println(timeStamp);
+		
 		
 	}
 	
@@ -43,7 +47,6 @@ public class Repository {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		
 		if(args.length > 1) {
 			Repository r = new Repository(args);

@@ -4,7 +4,7 @@ public class TestSuite {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//testRepository();
+		testRepository();
 		//Repository r = new Repository();
 		//r.create();
 	}
@@ -26,12 +26,12 @@ public class TestSuite {
 	public static void testRepository() {
 		File src = new File("./sourceTest");
 		File dest = new File("./destTest");
-		
-		//Repository rep = new Repository();
+		String[] s  = {src.getPath(), dest.getPath()};
+		Repository rep = new Repository(s);
 		
 		//rep.copyDirectory(src, dest);
-		System.out.println(src.getAbsolutePath());
-		System.out.println(dest.getAbsolutePath());
+		//System.out.println(src.getAbsolutePath());
+		//System.out.println(dest.getAbsolutePath());
 	}
 
 }
