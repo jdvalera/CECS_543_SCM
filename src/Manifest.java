@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Manifest {
 	
@@ -6,7 +7,11 @@ public class Manifest {
 	String userCmd;
 	String srcPath;
 	String targetPath;
-	Artifact[] artifacts;
+	ArrayList<Artifact> artifacts;
+	
+	public Manifest() {
+		
+	}
 	
 	public void setTime(String t) {
 		creationTime = t;
@@ -27,7 +32,6 @@ public class Manifest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
