@@ -3,6 +3,10 @@ import java.text.SimpleDateFormat;
 
 public class Repository {
 	
+	public Repository(String[] args) {
+		copyDirectory(new File(args[0]), new File (args[1]));
+	}
+	
 	public void create() {
 		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
 				.format(new java.util.Date());
@@ -39,7 +43,11 @@ public class Repository {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Repository r = new Repository();
+		
+		
+		if(args.length > 1) {
+			Repository r = new Repository(args);
+		}
 	}
 
 }

@@ -5,8 +5,8 @@ public class TestSuite {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//testRepository();
-		Repository r = new Repository();
-		r.create();
+		//Repository r = new Repository();
+		//r.create();
 	}
 	
 	public static void testArtifact() {
@@ -27,9 +27,9 @@ public class TestSuite {
 		File src = new File("./sourceTest");
 		File dest = new File("./destTest");
 		
-		Repository rep = new Repository();
+		//Repository rep = new Repository();
 		
-		rep.copyDirectory(src, dest);
+		//rep.copyDirectory(src, dest);
 		System.out.println(src.getAbsolutePath());
 		System.out.println(dest.getAbsolutePath());
 	}
