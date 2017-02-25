@@ -6,6 +6,7 @@ public class Manifest {
 	String userCmd;
 	String srcPath;
 	String targetPath;
+	Artifact[] artifacts;
 	
 	public void setTime(String t) {
 		creationTime = t;
