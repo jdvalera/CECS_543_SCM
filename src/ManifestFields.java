@@ -25,10 +25,9 @@ public class ManifestFields {
 		
 	}
 	
-	public  ManifestFields(String pN, String cT, String uC, String sP, String tP,
+	public  ManifestFields(String cT, String uC, String sP, String tP,
 			String fN, ArrayList<Artifact> af,File dir) {
 		
-		projectName = pN;
 		creationTime = cT;
 		userCmd = uC;
 		srcPath = sP;
