@@ -103,9 +103,12 @@ public class Artifact {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File test = new File("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project", "text.txt");
-		File dest = new File ("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project\\testing");
+		File test = new File("./", "text.txt");
+		File dest = new File ("./testing");
 		Artifact a = new Artifact(test, dest);
+		
+		//File directory = new File("./");
+		//System.out.println(directory.getAbsolutePath());
 
 		System.out.println(a.getID());
 		System.out.println(a.leafFolder.getPath());
