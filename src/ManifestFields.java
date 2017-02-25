@@ -12,4 +12,17 @@ public class ManifestFields {
 	ArrayList<Artifact> artifacts;
 	File directory;
 	
+	public  ManifestFields(String pN, String cT, String uC, String sP, String tP,
+			String fN, ArrayList<Artifact> af,File dir) {
+		
+		projectName = pN;
+		creationTime = cT;
+		userCmd = uC;
+		srcPath = sP;
+		targetPath = tP;
+		fileName = fN;
+		artifacts = af;
+		directory = dir;
+		
+	}
 }
