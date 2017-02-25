@@ -93,6 +93,10 @@ public class ManifestFields {
 	public void setArtifacts(ArrayList<Artifact> artifacts) {
 		this.artifacts = artifacts;
 	}
+	
+	public void addArtifact(Artifact artifact) {
+		this.artifacts.add(artifact);
+	}
 
 	public File getDirectory() {
 		return directory;

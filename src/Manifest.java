@@ -16,6 +16,7 @@ public class Manifest {
 	String fileName = "";
 	ArrayList<Artifact> artifacts;
 	File directory;
+	ManifestFields manifestFields;
 	
 	public Manifest(String path) {
 		creationTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")

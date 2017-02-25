@@ -5,12 +5,25 @@ public class Repository {
 	
 	String path;
 	
+	/*
+	String projectName = "Vix-1";
+	String creationTime = "";
+	String userCmd = "";
+	String srcPath = "";
+	String targetPath = "";
+	String fileName = "";
+	ArrayList<Artifact> artifacts;
+	File directory;*/
+	
 	public Repository(String[] args) {
+		System.out.println("Creating Repository...");
 		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
 				.format(new java.util.Date());
+		
 		path = args[1];
 		copyDirectory(new File(args[0]), new File (args[1]));
 		Manifest m = new Manifest(path);
+		System.out.println("Repository Created!");
 	}
 	
 	public void create() {
