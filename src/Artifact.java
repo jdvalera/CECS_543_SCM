@@ -17,14 +17,14 @@ public class Artifact {
 	public Artifact(File src, File dest) {
 		sourceFile = src;
 		setID();
-		destination = dest;
+		destination = new File(dest.getParent());
 		createLeafFolder();
 		insertArtifact();
 	}
 	
 	
 	public boolean createLeafFolder() {
-		leafFolder = new File(destination.getName() + File.separator + sourceFile.getName());
+		leafFolder = new File(destination.getPath() + File.separator + sourceFile.getName());
 		return leafFolder.mkdir();
 	}
 	
