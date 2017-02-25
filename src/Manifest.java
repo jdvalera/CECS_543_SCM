@@ -7,6 +7,22 @@ public class Manifest {
 	String srcPath;
 	String targetPath;
 	
+	public void setTime(String t) {
+		creationTime = t;
+	}
+	
+	public void setCmd(String c) {
+		userCmd = c;
+	}
+	
+	public void setSrcPath(String sp) {
+		srcPath = sp;
+	}
+	
+	public void setTargetPath(String tp) {
+		targetPath = tp;
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
