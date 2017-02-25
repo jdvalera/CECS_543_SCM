@@ -1,9 +1,12 @@
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class Repository {
 	
-	public static void create() {
-		System.out.println("Created Repository");
+	public void create() {
+		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
+				.format(new java.util.Date());
+		System.out.println(timeStamp);
 		
 	}
 	
