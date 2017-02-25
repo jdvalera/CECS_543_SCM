@@ -1,31 +1,63 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 public class Artifact {
 	
 	String artifactID;
 	File sourceFile;
 	File destination;
+	File leafFolder;
+	String extension;
 	
 	public Artifact(File src, File dest) {
 		sourceFile = src;
 		setID();
 		destination = dest;
 		createLeafFolder();
+		insertArtifact();
 	}
 	
 	public boolean createLeafFolder() {
-		return new File(destination.getName() + File.separator + sourceFile.getName()).mkdir();
+		leafFolder = new File(destination.getName() + File.separator + sourceFile.getName());
+		return leafFolder.mkdir();
+	}
+	
+	public void insertArtifact() {
+		try {
+			InputStream in = new FileInputStream(sourceFile);
+			File newFile = new File(leafFolder.getPath(), artifactID + "." + extension);
+			OutputStream out = new FileOutputStream(newFile);
+			
+			byte[] buffer = new byte[1024];
+			
+			int length;
+			
+			while ((length = in.read(buffer)) > 0) {
+				out.write(buffer, 0, length);
+			}
+			
+			in.close();
+			out.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void setID() {
 		
 		int total = 0;
 		int length = (int) sourceFile.length();
-		String ext = getFileExtension(sourceFile);
+		extension = getFileExtension(sourceFile);
 		try {
 			InputStream input = new FileInputStream(sourceFile);
 			int data = input.read();
@@ -52,7 +84,7 @@ public class Artifact {
 			e.printStackTrace();
 		}
 		
-		 artifactID =  "" + total + "." + length + "." + ext;
+		 artifactID =  "" + total + "." + length + "." + extension;
 		
 	}
 	
@@ -76,7 +108,7 @@ public class Artifact {
 		Artifact a = new Artifact(test, dest);
 
 		System.out.println(a.getID());
-		System.out.println(a.destination.getAbsolutePath());
+		System.out.println(a.leafFolder.getPath());
 		
 		//System.out.println(a.createID("HELLO WORLD"));
 	}
