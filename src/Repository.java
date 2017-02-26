@@ -24,16 +24,20 @@ public class Repository {
 		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
 				.format(new java.util.Date());
 		
+		String mTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")
+				.format(new java.util.Date());
+		
 		mF.setCreationTime(timeStamp);
 		mF.setUserCmd("java Repository " + args[0] + " " + args[1]);
 		mF.setSrcPath(args[0]);
 		mF.setTargetPath(args[1]);
-		mF.setFileName("Manifest-" + timeStamp + ".txt");
+		mF.setFileName("Manifest-" + mTime + ".txt");
 		mF.setDirectory(new File(args[1] + File.separator + "activity"));
 		
 		path = args[1];
 		copyDirectory(new File(args[0]), new File (args[1]));
-		Manifest m = new Manifest(path);
+		//Manifest m = new Manifest(path);
+		Manifest m = new Manifest(mF);
 		System.out.println("Repository Created!");
 	}
 	

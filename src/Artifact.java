@@ -13,6 +13,7 @@ public class Artifact {
 	File destination;
 	File leafFolder;
 	String extension;
+	File file;
 	
 	public Artifact(File src, File dest) {
 		sourceFile = src;
@@ -31,8 +32,8 @@ public class Artifact {
 	public void insertArtifact() {
 		try {
 			InputStream in = new FileInputStream(sourceFile);
-			File newFile = new File(leafFolder.getPath(), artifactID + "." + extension);
-			OutputStream out = new FileOutputStream(newFile);
+			file = new File(leafFolder.getPath(), artifactID + "." + extension);
+			OutputStream out = new FileOutputStream(file);
 			
 			byte[] buffer = new byte[1024];
 			
@@ -53,7 +54,8 @@ public class Artifact {
 		}
 		
 	}
-	
+
+
 	public void setID() {
 		
 		int total = 0;
@@ -89,10 +91,6 @@ public class Artifact {
 		
 	}
 	
-	public String getID() {
-		return artifactID;
-	}
-	
 	public String getFileExtension(File file) {
 	    String name = file.getName();
 	    try {
@@ -100,6 +98,64 @@ public class Artifact {
 	    } catch (Exception e) {
 	        return "";
 	    }
+	}
+	
+	public String getArtifactID() {
+		return artifactID;
+	}
+
+
+	public void setArtifactID(String artifactID) {
+		this.artifactID = artifactID;
+	}
+
+
+	public File getSourceFile() {
+		return sourceFile;
+	}
+
+
+	public void setSourceFile(File sourceFile) {
+		this.sourceFile = sourceFile;
+	}
+
+
+	public File getDestination() {
+		return destination;
+	}
+
+
+	public void setDestination(File destination) {
+		this.destination = destination;
+	}
+
+
+	public File getLeafFolder() {
+		return leafFolder;
+	}
+
+
+	public void setLeafFolder(File leafFolder) {
+		this.leafFolder = leafFolder;
+	}
+
+
+	public String getExtension() {
+		return extension;
+	}
+
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	
+	public File getFile() {
+		return file;
+	}
+
+
+	public void setFile(File file) {
+		this.file = file;
 	}
 
 	public static void main(String[] args) {

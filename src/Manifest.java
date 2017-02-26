@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class Manifest {
+	
+	ManifestFields manifestFields;
 	
 	String projectName = "Vix-1";
 	String creationTime = "";
@@ -16,7 +20,7 @@ public class Manifest {
 	String fileName = "";
 	ArrayList<Artifact> artifacts;
 	File directory;
-	ManifestFields manifestFields;
+	
 	
 	public Manifest(String path) {
 		creationTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")
@@ -31,12 +35,29 @@ public class Manifest {
 	
 	public Manifest(ManifestFields mf) {
 		this.manifestFields = mf;
+		
+		if(!manifestFields.getDirectory().exists()) {
+			manifestFields.getDirectory().mkdir();
+		}
+		createManifestFile();
 	}
 	
-	public String[] createManifestContent() {
+	public ArrayList<String> createManifestContent() {
 		
-		String[] content = {projectName, creationTime, userCmd, srcPath, targetPath};
-	
+		String[] s = {projectName, 
+				manifestFields.getCreationTime(), manifestFields.getUserCmd(),
+				new File(manifestFields.getSrcPath()).getAbsolutePath(),
+				new File(manifestFields.getTargetPath()).getAbsolutePath()};
+		
+		ArrayList<String> content = new ArrayList<String>(Arrays.asList(s));
+		
+		for(Artifact a : manifestFields.artifacts) {
+			String artifact;
+			artifact = a.getArtifactID() + " " + a.getSourceFile().getName()
+					+ " " + a.getFile().getPath();
+			content.add(artifact);
+		}
+		
 		
 		return content;
 	}
@@ -47,9 +68,10 @@ public class Manifest {
 		FileWriter fw = null;
 		
 		try {
-			fw = new FileWriter(directory.getPath() + File.separator + fileName);
+			fw = new FileWriter(manifestFields.getDirectory().getPath()
+					+ File.separator + manifestFields.getFileName());
 			bw = new BufferedWriter(fw);
-			String[] content = createManifestContent();
+			ArrayList<String> content = createManifestContent();
 			for(String s : content) {
 				
 				bw.write(s);
@@ -70,23 +92,6 @@ public class Manifest {
 		}
 		
 	}
-	
-	public void setTime(String t) {
-		creationTime = t;
-	}
-	
-	public void setCmd(String c) {
-		userCmd = c;
-	}
-	
-	public void setSrcPath(String sp) {
-		srcPath = sp;
-	}
-	
-	public void setTargetPath(String tp) {
-		targetPath = tp;
-	}
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
