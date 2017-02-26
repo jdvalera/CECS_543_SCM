@@ -16,13 +16,14 @@ The finished product will be an SCM (Source Code Management) project. The first 
 ## Running the Program
 The main class of the program is Repository.java
 
-1. To run the program copy the files listed above
-2. Compile Repository.java
+1. To run the program copy the files listed above into a directory
+2. Change your directory to the directory where you copied the files
+3. Compile Repository.java
 
    ```
    javac Repository.java
    ```
-3. Run the Repository class with the first argument as the src directory path and the second argument as the dest directory path. (You can use an absolute or relative path)
+4. Run the Repository class with the first argument as the src directory path and the second argument as the dest directory path. (You can use an absolute or relative path)
   ```
   java Repository ./sourcePath ./destPath
   ```
