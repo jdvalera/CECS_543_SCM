@@ -13,11 +13,18 @@ The finished product will be an SCM (Source Code Management) project. The first 
 * ManifestFields.java
 * Repository.java
 
+## External Requirements
+You have to have the Java Development Kit (JDK) installed to compile and run the java code.
+
+## Setup
+If you do not have the JDK installed, go to the Oracle website and download the JDK to compile and run the program.
+[JDK download link](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
 ## Running the Program
 The main class of the program is Repository.java
 
 1. To run the program copy the files listed above into a directory
-2. Change your directory to the directory where you copied the files
+2. Go into the directory that you copied the files to
 3. Compile Repository.java
 
    ```
