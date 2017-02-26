@@ -3,19 +3,8 @@ import java.text.SimpleDateFormat;
 
 public class Repository {
 	
-	String path;
-	
-	/*
-	String projectName = "Vix-1";
-	String creationTime = "";
-	String userCmd = "";
-	String srcPath = "";
-	String targetPath = "";
-	String fileName = "";
-	ArrayList<Artifact> artifacts;
-	File directory;*/
-	
-	ManifestFields mF;
+	String path;	
+	private ManifestFields mF;
 	
 	public Repository(String[] args) {
 		System.out.println("Creating Repository...");
@@ -36,14 +25,8 @@ public class Repository {
 		
 		path = args[1];
 		copyDirectory(new File(args[0]), new File (args[1]));
-		//Manifest m = new Manifest(path);
 		Manifest m = new Manifest(mF);
 		System.out.println("Repository Created!");
-	}
-	
-	public void create() {
-		
-		
 	}
 	
 	public void copyDirectory(File src, File dest) {
@@ -69,6 +52,10 @@ public class Repository {
 		} else {
 
 			Artifact artifact = new Artifact(src, dest);
+			System.out.println("File copied from " + 
+			artifact.getSourceFile().getPath() + " to " +
+			artifact.getFile().getPath());
+			
 			mF.addArtifact(artifact);
 		}
 		

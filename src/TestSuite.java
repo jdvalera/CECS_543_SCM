@@ -18,7 +18,7 @@ public class TestSuite {
 		//System.out.println(directory.getAbsolutePath());
 
 		System.out.println(a.getArtifactID());
-		System.out.println(a.leafFolder.getPath());
+		System.out.println(a.getLeafFolder().getPath());
 		
 		//System.out.println(a.createID("HELLO WORLD"));
 	}

@@ -8,17 +8,17 @@ import java.io.OutputStream;
 
 public class Artifact {
 	
-	String artifactID;
-	File sourceFile;
-	File destination;
-	File leafFolder;
-	String extension;
-	File file;
+	private String artifactID;
+	private File sourceFile;
+	private File destination;
+	private File leafFolder;
+	private String extension;
+	private File file;
 	
 	public Artifact(File src, File dest) {
-		sourceFile = src;
+		this.sourceFile = src;
 		setID();
-		destination = new File(dest.getParent());
+		this.destination = new File(dest.getParent());
 		createLeafFolder();
 		insertArtifact();
 	}
@@ -156,11 +156,6 @@ public class Artifact {
 
 	public void setFile(File file) {
 		this.file = file;
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

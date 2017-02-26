@@ -3,38 +3,38 @@ import java.util.ArrayList;
 
 public class ManifestFields {
 	
-	String projectName = "Vix-1";
-	String creationTime = "";
-	String userCmd = "";
-	String srcPath = "";
-	String targetPath = "";
-	String fileName = "";
-	ArrayList<Artifact> artifacts;
-	File directory;
+	private String projectName = "Vix-1";
+	private String creationTime = "";
+	private String userCmd = "";
+	private String srcPath = "";
+	private String targetPath = "";
+	private String fileName = "";
+	private ArrayList<Artifact> artifacts;
+	private File directory;
 	
 	public ManifestFields() {
 
-		projectName = "Vix-1";
-		creationTime = "";
-		userCmd = "";
-		srcPath = "";
-		targetPath = "";
-		fileName = "";
-		artifacts = new ArrayList<Artifact>();
-		directory = null;
+		this.projectName = "Vix-1";
+		this.creationTime = "";
+		this.userCmd = "";
+		this.srcPath = "";
+		this.targetPath = "";
+		this.fileName = "";
+		this.artifacts = new ArrayList<Artifact>();
+		this.directory = null;
 		
 	}
 	
 	public  ManifestFields(String cT, String uC, String sP, String tP,
 			String fN, ArrayList<Artifact> af,File dir) {
 		
-		creationTime = cT;
-		userCmd = uC;
-		srcPath = sP;
-		targetPath = tP;
-		fileName = fN;
-		artifacts = af;
-		directory = dir;
+		this.creationTime = cT;
+		this.userCmd = uC;
+		this.srcPath = sP;
+		this.targetPath = tP;
+		this.fileName = fN;
+		this.artifacts = af;
+		this.directory = dir;
 		
 	}
 

@@ -1,8 +1,0 @@
-Vix-1
-02/25/2017 18:05
-java Repository .\sourceTest .\destTest
-E:\Users\John\Desktop\Dropbox\CECS 543\Project\.\sourceTest
-E:\Users\John\Desktop\Dropbox\CECS 543\Project\.\destTest
-0.0.txt test.txt .\destTest\A\test.txt\0.0.txt.txt
-5940.11.txt text.txt .\destTest\A\text.txt\5940.11.txt.txt
-72.1.txt H.txt .\destTest\H.txt\72.1.txt.txt

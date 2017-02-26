@@ -12,26 +12,9 @@ public class Manifest {
 	
 	ManifestFields manifestFields;
 	
-	String projectName = "Vix-1";
-	String creationTime = "";
-	String userCmd = "";
-	String srcPath = "";
-	String targetPath = "";
-	String fileName = "";
-	ArrayList<Artifact> artifacts;
-	File directory;
-	
-	
-	public Manifest(String path) {
-		creationTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")
-				.format(new java.util.Date());
-		directory = new File(path + File.separator + "activity");
-		if(!directory.exists()) {
-			directory.mkdir();
-		}
-		fileName = "Manifest-" + creationTime + ".txt";
-		createManifestFile();
-	}
+	private String projectName = "Vix-1";
+	private ArrayList<Artifact> artifacts;
+
 	
 	public Manifest(ManifestFields mf) {
 		this.manifestFields = mf;
@@ -51,7 +34,7 @@ public class Manifest {
 		
 		ArrayList<String> content = new ArrayList<String>(Arrays.asList(s));
 		
-		for(Artifact a : manifestFields.artifacts) {
+		for(Artifact a : manifestFields.getArtifacts()) {
 			String artifact;
 			artifact = a.getArtifactID() + " " + a.getSourceFile().getName()
 					+ " " + a.getFile().getPath();
@@ -91,6 +74,10 @@ public class Manifest {
 			}		
 		}
 		
+	}
+	
+	public ArrayList<Artifact> getArtifacts() {
+		return artifacts;
 	}
 
 	public static void main(String[] args) {
