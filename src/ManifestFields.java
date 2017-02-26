@@ -1,6 +1,11 @@
 import java.io.File;
 import java.util.ArrayList;
 
+/*
+ * Class responsible for storing all fields of the Manifest class
+ * Has 2 constructors and getters and setters for all instance variables
+ */
+
 public class ManifestFields {
 	
 	private String projectName = "Vix-1";

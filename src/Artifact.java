@@ -1,10 +1,15 @@
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+/*
+ * Class representing the files (Artifacts)
+ */
 
 public class Artifact {
 	
@@ -15,6 +20,12 @@ public class Artifact {
 	private String extension;
 	private File file;
 	
+	/*
+	 * Constructor that takes in the src directory and destination directory
+	 * Creates a leaf folder
+	 * Creates a unique artifact ID for a file
+	 * Copies a file from the src, renames it and moves it to the leaf folder
+	 */
 	public Artifact(File src, File dest) {
 		this.sourceFile = src;
 		setID();
@@ -23,12 +34,17 @@ public class Artifact {
 		insertArtifact();
 	}
 	
-	
+	/*
+	 * Creates the leaf folder in the destination project tree
+	 */
 	public boolean createLeafFolder() {
 		leafFolder = new File(destination.getPath() + File.separator + sourceFile.getName());
 		return leafFolder.mkdir();
 	}
 	
+	/*
+	 * Method for copying the file from source to leaf folder
+	 */
 	public void insertArtifact() {
 		try {
 			InputStream in = new FileInputStream(sourceFile);
@@ -54,8 +70,10 @@ public class Artifact {
 		}
 		
 	}
-
-
+	
+	/*
+	 * Method that creates a unique artifact ID based on contents of file
+	 */
 	public void setID() {
 		
 		int total = 0;
@@ -91,6 +109,9 @@ public class Artifact {
 		
 	}
 	
+	/*
+	 * Method responsible for getting the extension of a file
+	 */
 	public String getFileExtension(File file) {
 	    String name = file.getName();
 	    try {

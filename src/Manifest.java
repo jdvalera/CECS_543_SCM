@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
+/*
+ * Class responsible for creating the manifest file.
+ */
+
 public class Manifest {
 	
 	ManifestFields manifestFields;

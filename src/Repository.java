@@ -1,6 +1,13 @@
 import java.io.File;
 import java.text.SimpleDateFormat;
 
+/*
+ * Class that represents the project tree created.
+ */
+
+/*
+ * Constructor that takes in cmd line args and creates the repository
+ */
 public class Repository {
 	
 	String path;	
@@ -29,6 +36,9 @@ public class Repository {
 		System.out.println("Repository Created!");
 	}
 	
+	/*
+	 * Method that copies source directory to destination directory
+	 */
 	public void copyDirectory(File src, File dest) {
 		
 		if(src.isDirectory()) {
@@ -60,9 +70,11 @@ public class Repository {
 		}
 		
 	}
-
+	
+	/*
+	 * Sends the cmd line args to the constructor
+	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		if(args.length > 1) {
 			Repository r = new Repository(args);
