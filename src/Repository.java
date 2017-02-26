@@ -15,10 +15,21 @@ public class Repository {
 	ArrayList<Artifact> artifacts;
 	File directory;*/
 	
+	ManifestFields mF;
+	
 	public Repository(String[] args) {
 		System.out.println("Creating Repository...");
+		
+		mF = new ManifestFields();
 		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
 				.format(new java.util.Date());
+		
+		mF.setCreationTime(timeStamp);
+		mF.setUserCmd("java Repository " + args[0] + " " + args[1]);
+		mF.setSrcPath(args[0]);
+		mF.setTargetPath(args[1]);
+		mF.setFileName("Manifest-" + timeStamp + ".txt");
+		mF.setDirectory(new File(args[1] + File.separator + "activity"));
 		
 		path = args[1];
 		copyDirectory(new File(args[0]), new File (args[1]));
@@ -54,6 +65,7 @@ public class Repository {
 		} else {
 
 			Artifact artifact = new Artifact(src, dest);
+			mF.addArtifact(artifact);
 		}
 		
 	}
