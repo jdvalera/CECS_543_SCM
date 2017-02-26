@@ -29,6 +29,10 @@ public class Manifest {
 		createManifestFile();
 	}
 	
+	public Manifest(ManifestFields mf) {
+		this.manifestFields = mf;
+	}
+	
 	public String[] createManifestContent() {
 		
 		String[] content = {projectName, creationTime, userCmd, srcPath, targetPath};
