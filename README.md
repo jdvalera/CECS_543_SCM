@@ -1,3 +1,4 @@
+
 # CECS_543_SCM
 Source Code Management Project for CECS 543-02
 Part 1
@@ -34,7 +35,13 @@ The main class of the program is Repository.java
   ```
   java Repository ./sourcePath ./destPath
   ```
-  
+## Running on Eclipse
+
+1. Clone the repository
+2. Open Eclipse and import the cloned folder
+3. Go to the file `TestSuite.java` and run it
+4. Running the folder will create a directory `destTest` in the project directory
+
 ## Bugs
 If you are using Windows file paths, you will have to use double slashes '//' instead of single slashes '/' in the command.
 
