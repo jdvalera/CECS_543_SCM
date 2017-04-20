@@ -40,7 +40,7 @@ public class Repository {
 	 * Method for updating the repository.
 	 * Each check-in has its own manifest.
 	 */
-	public void checkIn() {
+	public void checkIn(File src, File dest) {
 		
 	}
 	
