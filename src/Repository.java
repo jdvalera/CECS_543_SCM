@@ -37,6 +37,14 @@ public class Repository {
 	}
 	
 	/*
+	 * Method for updating the repository.
+	 * Each check-in has its own manifest.
+	 */
+	public void checkIn() {
+		
+	}
+	
+	/*
 	 * Method that copies source directory to destination directory
 	 */
 	public void copyDirectory(File src, File dest) {
