@@ -14,6 +14,11 @@ public class Repository {
 	private ManifestFields mF;
 	
 	public Repository(String[] args) {
+		
+		if(args[0].equals("check-in")) {
+			checkIn(args[1],args[2]);
+		} else 
+		{
 		System.out.println("Creating Repository...");
 		
 		mF = new ManifestFields();
@@ -31,23 +36,43 @@ public class Repository {
 		mF.setDirectory(new File(args[1] + File.separator + "activity"));
 		
 		path = args[1];
-		copyDirectory(new File(args[0]), new File (args[1]));
+		copyDirectory(new File(args[0]), new File (args[1]), mF);
 		Manifest m = new Manifest(mF);
 		System.out.println("Repository Created!");
+		}
 	}
 	
 	/*
 	 * Method for updating the repository.
 	 * Each check-in has its own manifest.
 	 */
-	public void checkIn(File src, File dest) {
+	public void checkIn(String src, String dest) {
+		System.out.println("Checking in...");
 		
+		ManifestFields mFs = new ManifestFields();
+		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
+				.format(new java.util.Date());
+		
+		String mTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")
+				.format(new java.util.Date());
+		
+		mFs.setCreationTime(timeStamp);
+		mFs.setUserCmd("java Repository check-in " + src + " " + dest);
+		mFs.setSrcPath(src);
+		mFs.setTargetPath(dest);
+		mFs.setFileName("Manifest-" + mTime + ".txt");
+		mFs.setDirectory(new File(dest + File.separator + "activity"));
+		
+		path = src;
+		copyDirectory(new File(src), new File (dest), mFs);
+		Manifest m = new Manifest(mFs);
+		System.out.println("Check-in Complete!");
 	}
 	
 	/*
 	 * Method that copies source directory to destination directory
 	 */
-	public void copyDirectory(File src, File dest) {
+	public void copyDirectory(File src, File dest, ManifestFields mF) {
 		
 		if(src.isDirectory()) {
 			
@@ -65,7 +90,7 @@ public class Repository {
 				File srcFile = new File(src, file);
 				File destFile = new File(dest, file);
 				
-				copyDirectory(srcFile, destFile);
+				copyDirectory(srcFile, destFile, mF);
 			}
 		} else {
 
