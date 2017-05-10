@@ -4,9 +4,19 @@ public class TestSuite {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		testRepository();
+		//testRepository();
 		//Repository r = new Repository();
 		//r.create();
+		testCheckOut();
+	}
+	
+	public static void testCheckOut() {
+		File test = new File("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project\\src\\..\\destTest\\A");
+		System.out.println(test.getAbsolutePath().replaceAll("\\\\", "/"));
+		String list[] = test.list();
+		for(String l : list) {
+			System.out.println(l);
+		}
 	}
 	
 	public static void testArtifact() {
