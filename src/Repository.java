@@ -70,6 +70,14 @@ public class Repository {
 	}
 	
 	/*
+	 * Method for checking out a specific manifest configuration
+	 * Each check-out has its own manifest
+	 */
+	public void checkOut(String src, String dest) {
+		
+	}
+	
+	/*
 	 * Method that copies source directory to destination directory
 	 */
 	public void copyDirectory(File src, File dest, ManifestFields mF) {
