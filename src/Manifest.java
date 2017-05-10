@@ -41,9 +41,11 @@ public class Manifest {
 		
 		for(String d : manifestFields.getDirectories()) {
 			String directory;
-			directory = d + " " + 
+			File dir = new File(d);
+			directory = dir.getName() + " " + dir.getAbsolutePath();
+			/*directory = d + " " + 
 			              new File(manifestFields.getSrcPath()).getAbsolutePath() + " "
-					    + new File(manifestFields.getTargetPath()).getAbsolutePath();
+					    + new File(manifestFields.getTargetPath()).getAbsolutePath();*/
 			content.add(directory);
 		}
 		

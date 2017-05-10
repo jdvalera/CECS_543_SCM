@@ -73,7 +73,7 @@ public class Repository {
 	 * Method for checking out a specific manifest configuration
 	 * Each check-out has its own manifest
 	 */
-	public void checkOut(String src, String dest) {
+	public void checkOut(String src, String dest, String mDate) {
 		
 	}
 	
@@ -90,7 +90,7 @@ public class Repository {
 						+ src + " to " + dest);
 			}
 			
-			mF.addDirectory(dest.getName());
+			mF.addDirectory(dest.getAbsolutePath());
 			// List files in directory
 			String files[] = src.list();
 			
