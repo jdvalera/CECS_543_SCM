@@ -15,6 +15,7 @@ public class ManifestFields {
 	private String targetPath = "";
 	private String fileName = "";
 	private ArrayList<Artifact> artifacts;
+	private ArrayList<String> directories;
 	private File directory;
 	
 	public ManifestFields() {
@@ -26,12 +27,13 @@ public class ManifestFields {
 		this.targetPath = "";
 		this.fileName = "";
 		this.artifacts = new ArrayList<Artifact>();
+		this.directories = new ArrayList<String>();
 		this.directory = null;
 		
 	}
 	
 	public  ManifestFields(String cT, String uC, String sP, String tP,
-			String fN, ArrayList<Artifact> af,File dir) {
+			String fN, ArrayList<Artifact> af, ArrayList<String> dirs,File dir) {
 		
 		this.creationTime = cT;
 		this.userCmd = uC;
@@ -39,6 +41,7 @@ public class ManifestFields {
 		this.targetPath = tP;
 		this.fileName = fN;
 		this.artifacts = af;
+		this.directories = dirs;
 		this.directory = dir;
 		
 	}
@@ -94,6 +97,10 @@ public class ManifestFields {
 	public ArrayList<Artifact> getArtifacts() {
 		return artifacts;
 	}
+	
+	public ArrayList<String> getDirectories() {
+		return directories;
+	}
 
 	public void setArtifacts(ArrayList<Artifact> artifacts) {
 		this.artifacts = artifacts;
@@ -101,6 +108,10 @@ public class ManifestFields {
 	
 	public void addArtifact(Artifact artifact) {
 		this.artifacts.add(artifact);
+	}
+	
+	public void addDirectory(String directory) {
+		this.directories.add(directory);
 	}
 
 	public File getDirectory() {

@@ -18,6 +18,7 @@ public class Manifest {
 	
 	private String projectName = "Vix-1";
 	private ArrayList<Artifact> artifacts;
+	private ArrayList<String> directories;
 
 	
 	public Manifest(ManifestFields mf) {
@@ -37,6 +38,14 @@ public class Manifest {
 				new File(manifestFields.getTargetPath()).getAbsolutePath()};
 		
 		ArrayList<String> content = new ArrayList<String>(Arrays.asList(s));
+		
+		for(String d : manifestFields.getDirectories()) {
+			String directory;
+			directory = d + " " + 
+			              new File(manifestFields.getSrcPath()).getAbsolutePath() + " "
+					    + new File(manifestFields.getTargetPath()).getAbsolutePath();
+			content.add(directory);
+		}
 		
 		for(Artifact a : manifestFields.getArtifacts()) {
 			String artifact;

@@ -90,6 +90,7 @@ public class Repository {
 						+ src + " to " + dest);
 			}
 			
+			mF.addDirectory(dest.getName());
 			// List files in directory
 			String files[] = src.list();
 			
