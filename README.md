@@ -35,6 +35,21 @@ The main class of the program is Repository.java
   ```
   java Repository ./sourcePath ./destPath
   ```
+  
+## Checking in new files
+
+1. Copy the files listed above into a directory
+2. Go into the directory that you copied the files to
+3. Compile Repository.java
+
+```
+javac Repository.java
+```
+4. Run the Repository class with the first argument as `check-in`, the second argument is the source directory path, and the third argument is the destination directory path.
+
+```
+java Repository check-in ../sourcePath ../destPath
+```
 ## Running on Eclipse
 
 1. Clone the repository
