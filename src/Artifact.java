@@ -19,6 +19,7 @@ public class Artifact {
 	private File leafFolder;
 	private String extension;
 	private File file;
+	private boolean exists = true;
 	
 	/*
 	 * Constructor that takes in the src directory and destination directory
@@ -49,6 +50,9 @@ public class Artifact {
 		try {
 			InputStream in = new FileInputStream(sourceFile);
 			file = new File(leafFolder.getPath(), artifactID + "." + extension);
+			if(!file.exists()) { 
+				exists = false;
+			//System.out.println(artifactID + " created \n");
 			OutputStream out = new FileOutputStream(file);
 			
 			byte[] buffer = new byte[1024];
@@ -61,6 +65,7 @@ public class Artifact {
 			
 			in.close();
 			out.close();
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,6 +112,12 @@ public class Artifact {
 		
 		 artifactID =  "" + total + "." + length + "." + extension;
 		
+	}
+	
+	public boolean exists() {
+		if (exists)
+			return true;
+		return false;
 	}
 	
 	/*
