@@ -52,7 +52,7 @@ public class Manifest {
 		for(Artifact a : manifestFields.getArtifacts()) {
 			String artifact;
 			artifact = a.getArtifactID() + " " + a.getSourceFile().getName()
-					+ " " + a.getFile().getPath().replaceAll("\\\\", "/");
+					+ " " + a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
 			content.add(artifact);
 		}
 		

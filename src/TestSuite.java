@@ -13,6 +13,7 @@ public class TestSuite {
 	public static void testCheckOut() {
 		File test = new File("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project\\src\\..\\destTest\\A");
 		System.out.println(test.getAbsolutePath().replaceAll("\\\\", "/"));
+		//new File("E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/A/C").mkdir();
 		String list[] = test.list();
 		for(String l : list) {
 			System.out.println(l);
