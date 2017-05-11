@@ -121,6 +121,7 @@ public class Repository {
 				//System.out.println(words[0]);
 				fNames.add(words[0]);
 				if(words.length>2) {
+					//System.out.println(words[0] + " " + words[1]);
 					artifactNames.put(words[1], words[0]);
 				}
 			}

@@ -1,0 +1,12 @@
+Vix-1
+05/11/2017 12:28
+java Repository check-in ../sourceTest/ ../destTest/
+/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../sourceTest
+/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest
+destTest	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest
+A	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest/A
+0.0.txt	test.txt	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest/A
+5940.11.txt	text.txt	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest/A
+3323.6.txt	H copy.txt	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest
+168.2.txt	H.txt	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest
+3801.6.c	pwm.c	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest

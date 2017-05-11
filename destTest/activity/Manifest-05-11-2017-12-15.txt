@@ -1,0 +1,7 @@
+Vix-1
+05/11/2017 12:15
+java Repository check-out ../destTest/ ../checkoutTest/
+/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../destTest
+/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../checkoutTest
+checkoutTest	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../checkoutTest
+A	/Users/johnvalera/Documents/javaworkspace/CECS_543_SCM/src/../checkoutTest/A
