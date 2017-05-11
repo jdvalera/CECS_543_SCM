@@ -42,7 +42,7 @@ public class Manifest {
 		for(String d : manifestFields.getDirectories()) {
 			String directory;
 			File dir = new File(d);
-			directory = dir.getName() + " " + dir.getAbsolutePath().replaceAll("\\\\", "/");
+			directory = dir.getName() + "\t" + dir.getAbsolutePath().replaceAll("\\\\", "/");
 			/*directory = d + " " + 
 			              new File(manifestFields.getSrcPath()).getAbsolutePath() + " "
 					    + new File(manifestFields.getTargetPath()).getAbsolutePath();*/
@@ -51,8 +51,8 @@ public class Manifest {
 		
 		for(Artifact a : manifestFields.getArtifacts()) {
 			String artifact;
-			artifact = a.getArtifactID() + " " + a.getSourceFile().getName()
-					+ " " + a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
+			artifact = a.getArtifactID() + "\t" + a.getSourceFile().getName()
+					+ "\t" + a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
 			content.add(artifact);
 		}
 		
