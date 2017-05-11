@@ -82,18 +82,52 @@ public class Repository {
 	 * Each check-out has its own manifest
 	 */
 	public void checkOut(String src, String dest, String mDate) {
+		System.out.println("Checking out...");
 		List<String> lines;
+		List<String> fNames = new ArrayList<String>();
 		
-		String mName = dest.replaceAll("/+$", "") + File.separator + "activity" + File.separator
+		ManifestFields mFs = new ManifestFields();
+		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
+				.format(new java.util.Date());
+		
+		String mTime = new SimpleDateFormat("MM-dd-yyyy-HH-mm")
+				.format(new java.util.Date());
+		
+		mFs.setCreationTime(timeStamp);
+		mFs.setUserCmd("java Repository check-out " + src + " " + dest);
+		mFs.setSrcPath(src);
+		mFs.setTargetPath(dest);
+		mFs.setFileName("Manifest-" + mTime + ".txt");
+		mFs.setDirectory(new File(src + File.separator + "activity"));
+		
+		String mName = src.replaceAll("/+$", "") + File.separator + "activity" + File.separator
 				+ "Manifest-" + mDate + ".txt";
 		
 		lines = readFile(mName);
+		int count = 0;
 		
-		System.out.println(mName);
 		for(String line : lines) {
-			System.out.println(line);
+			String [] words = line.split("\t");
+			if(count>5) {
+				//System.out.println(line);
+				//System.out.println(words[0]);
+				fNames.add(words[0]);
+			}
+			count++;
 		}
 		
+		for(String f : fNames) {
+			System.out.println(f);
+		}
+		/*
+		String test = "E:/Users/John/Desktop/Dropbox/CECS 543/Project/sourceTest/A";
+		
+		if(fNames.contains(new File(test).getName())) {
+			System.out.println(new File(test).getName());
+		}*/
+		fNames.add(new File(src).getName());
+		copyDirectory(new File(src), new File(dest), mFs, fNames);
+		System.out.println("Check-out Complete!");
 	}
 	
 	/*
@@ -120,6 +154,49 @@ public class Repository {
 				
 				copyDirectory(srcFile, destFile, mF);
 			}
+		} else {
+
+			Artifact artifact = new Artifact(src, dest);
+			if(!artifact.exists()) {
+				System.out.println("File copied from " + 
+				artifact.getSourceFile().getPath() + " to " +
+				artifact.getFile().getPath());
+			}
+			
+			mF.addArtifact(artifact);
+		}
+		
+	}
+	
+	/*
+	 * Method that copies source directory to destination directory
+	 */
+	public void copyDirectory(File src, File dest, ManifestFields mF, List<String> fNames) {
+
+		if(src.isDirectory()) {
+			
+			if(fNames.contains(src.getName())) {
+			
+				if(!dest.exists()) {
+					dest.mkdir();
+					System.out.println("Directory copied from " 
+							+ src + " to " + dest);
+				}
+			
+				mF.addDirectory(dest.getAbsolutePath());
+			
+				// List files in directory
+				String files[] = src.list();
+			
+				for (String file:files) {
+				
+					File srcFile = new File(src, file);
+					File destFile = new File(dest, file);
+				
+					copyDirectory(srcFile, destFile, mF, fNames);
+				}
+			}
+
 		} else {
 
 			Artifact artifact = new Artifact(src, dest);
