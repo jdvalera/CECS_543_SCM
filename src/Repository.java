@@ -203,10 +203,14 @@ public class Repository {
 				for (String file:files) {
 					if (aNames.containsKey(file)) {
 						String fname = aNames.get(file).toString();
+
 						File srcFile = new File(src, file + File.separator
-								+ aNames.get(file) + fname.substring(fname.length()-4));
+								+ aNames.get(file));
+						String ext = getFileExtension(srcFile);
+						File srcFileExt = new File(srcFile.getAbsolutePath()+"."+ext);
+						
 						File destFile = new File(dest, file);
-						copyDirectory(srcFile, destFile, mF, fNames, aNames);
+						copyDirectory(srcFileExt, destFile, mF, fNames, aNames);
 					} else {
 						File srcFile = new File(src, file);
 						File destFile = new File(dest, file);
@@ -220,16 +224,16 @@ public class Repository {
 		} else {
 			System.out.println(src);
 			System.out.println(dest);
-			/*Artifact artifact = new Artifact(src, dest);
+			Artifact artifact = new Artifact(src, dest, true);
 			if(!artifact.exists()) {
 				System.out.println("File copied from " + 
 				artifact.getSourceFile().getPath() + " to " +
 				artifact.getFile().getPath());
 			}
 			
-			mF.addArtifact(artifact);*/
+			mF.addArtifact(artifact);
 
-			
+			/*
 			try {
 				InputStream in = new FileInputStream(src);
 				//File file = new File(dest);
@@ -251,13 +255,13 @@ public class Repository {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		}
 		
 	}
 	
-	public static List<String> readFile(String filename) {
+	public List<String> readFile(String filename) {
 		
 	  List<String> records = new ArrayList<String>();
 	  try {
@@ -274,6 +278,18 @@ public class Repository {
 	    e.printStackTrace();
 	    return null;
 	  }
+	}
+	
+	/*
+	 * Method responsible for getting the extension of a file
+	 */
+	public String getFileExtension(File file) {
+	    String name = file.getName();
+	    try {
+	        return name.substring(name.lastIndexOf(".") + 1);
+	    } catch (Exception e) {
+	        return "";
+	    }
 	}
 	
 	/*

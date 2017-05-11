@@ -35,6 +35,13 @@ public class Artifact {
 		insertArtifact();
 	}
 	
+	public Artifact(File src, File dest, boolean checkout) {
+		this.sourceFile = src;
+		setID();
+		this.destination = new File(dest.getAbsolutePath());
+		checkoutArtifact();
+	}
+	
 	/*
 	 * Creates the leaf folder in the destination project tree
 	 */
@@ -74,6 +81,30 @@ public class Artifact {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void checkoutArtifact() {
+		try {
+			InputStream in = new FileInputStream(sourceFile);
+			OutputStream out = new FileOutputStream(destination);
+			
+			byte[] buffer = new byte[1024];
+			int length;
+			
+			while ((length = in.read(buffer)) > 0) {
+				out.write(buffer, 0, length);
+			}
+			
+			in.close();
+			out.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/*
