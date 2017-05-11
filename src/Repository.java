@@ -1,5 +1,9 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Class that represents the project tree created.
@@ -17,7 +21,11 @@ public class Repository {
 		
 		if(args[0].equals("check-in")) {
 			checkIn(args[1],args[2]);
-		} else 
+		} 
+		else if (args[0].equals("check-out")) {
+			if(args.length > 2)
+			  checkOut(args[1], args[2], args[3]);
+		} else
 		{
 		System.out.println("Creating Repository...");
 		
@@ -74,6 +82,17 @@ public class Repository {
 	 * Each check-out has its own manifest
 	 */
 	public void checkOut(String src, String dest, String mDate) {
+		List<String> lines;
+		
+		String mName = dest.replaceAll("/+$", "") + File.separator + "activity" + File.separator
+				+ "Manifest-" + mDate + ".txt";
+		
+		lines = readFile(mName);
+		
+		System.out.println(mName);
+		for(String line : lines) {
+			System.out.println(line);
+		}
 		
 	}
 	
@@ -113,6 +132,25 @@ public class Repository {
 			mF.addArtifact(artifact);
 		}
 		
+	}
+	
+	public static List<String> readFile(String filename) {
+		
+	  List<String> records = new ArrayList<String>();
+	  try {
+	    BufferedReader reader = new BufferedReader(new FileReader(filename));
+	    String line;
+	    while ((line = reader.readLine()) != null) {
+	      records.add(line);
+	    }
+	    reader.close();
+	    return records;
+	  }
+	  catch (Exception e) {
+	    System.err.format("Exception occurred trying to read '%s'.", filename);
+	    e.printStackTrace();
+	    return null;
+	  }
 	}
 	
 	/*

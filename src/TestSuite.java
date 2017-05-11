@@ -26,12 +26,22 @@ public class TestSuite {
 		//}
 		
 		String filename = "E:/Users/John/Desktop/Dropbox/CECS 543/Project/destTest/activity/Manifest-05-10-2017-20-22.txt";
+		File activity = new File("E:/Users/John/Desktop/Dropbox/CECS 543/Project/destTest/activity");
+		String files[] = activity.list();
+		for(String f : files) {
+			System.out.println(f);
+		}
 		lines = readFile(filename);
 		int count = 0;
 		for(String line : lines) {
-			if(count>5)
-				System.out.println(line);
-				System.out.println(line.split("\t").length);
+			String [] words = line.split("\t");
+			if(count>5) {
+				//System.out.println(line);
+				System.out.println(words[0]);
+				System.out.println(words[1]);
+				if(words.length>2)
+					System.out.println(words[2]);
+			}
 			count++;
 		}
 	}
