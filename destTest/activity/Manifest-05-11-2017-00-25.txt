@@ -1,0 +1,12 @@
+Vix-1
+05/11/2017 00:25
+java Repository check-out ../destTest/ ../checkoutTest/
+E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest
+E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../checkoutTest
+checkoutTest	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../checkoutTest
+A	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../checkoutTest/A
+B	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../checkoutTest/B
+C	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../checkoutTest/B/C
+0.0.txt	0.0.txt.txt	
+5940.11.txt	5940.11.txt.txt	
+168.2.txt	168.2.txt.txt	

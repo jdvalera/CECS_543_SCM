@@ -48,11 +48,12 @@ public class Manifest {
 					    + new File(manifestFields.getTargetPath()).getAbsolutePath();*/
 			content.add(directory);
 		}
-		
+
 		for(Artifact a : manifestFields.getArtifacts()) {
 			String artifact;
 			artifact = a.getArtifactID() + "\t" + a.getSourceFile().getName()
-					+ "\t" + a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
+					+ "\t" + a.getDestination().getAbsolutePath().replaceAll("\\\\", "/");
+			//+ a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
 			content.add(artifact);
 		}
 		

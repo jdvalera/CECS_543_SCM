@@ -78,7 +78,7 @@ public class Repository {
 		mFs.setFileName("Manifest-" + mTime + ".txt");
 		mFs.setDirectory(new File(dest + File.separator + "activity"));
 		
-		path = src;
+		//path = src;
 		copyDirectory(new File(src), new File (dest), mFs);
 		Manifest m = new Manifest(mFs);
 		System.out.println("Check-in Complete!");
@@ -126,10 +126,10 @@ public class Repository {
 			}
 			count++;
 		}
-		
+		/*
 		for(String f : fNames) {
 			System.out.println(f);
-		}
+		}*/
 		/*
 		String test = "E:/Users/John/Desktop/Dropbox/CECS 543/Project/sourceTest/A";
 		
@@ -138,6 +138,8 @@ public class Repository {
 		}*/
 		fNames.add(new File(src).getName());
 		copyDirectory(new File(src), new File(dest), mFs, fNames, artifactNames);
+		Manifest m = new Manifest(mFs);
+		//System.out.println(mFs.getArtifacts().get(1).getArtifactID());
 		System.out.println("Check-out Complete!");
 	}
 	
@@ -206,7 +208,9 @@ public class Repository {
 
 						File srcFile = new File(src, file + File.separator
 								+ aNames.get(file));
+						
 						String ext = getFileExtension(srcFile);
+						
 						File srcFileExt = new File(srcFile.getAbsolutePath()+"."+ext);
 						
 						File destFile = new File(dest, file);
@@ -222,8 +226,6 @@ public class Repository {
 			}
 
 		} else {
-			System.out.println(src);
-			System.out.println(dest);
 			Artifact artifact = new Artifact(src, dest, true);
 			if(!artifact.exists()) {
 				System.out.println("File copied from " + 
@@ -232,6 +234,7 @@ public class Repository {
 			}
 			
 			mF.addArtifact(artifact);
+			//System.out.println(mF.getArtifacts().get(0).getArtifactID());
 
 			/*
 			try {
