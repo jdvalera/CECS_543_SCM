@@ -1,0 +1,12 @@
+Vix-1
+05/10/2017 20:22
+java Repository ../sourceTest/ ../destTest/
+E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../sourceTest
+E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest
+destTest	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest
+A	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/A
+B	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/B
+C	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/B/C
+0.0.txt	test.txt	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/A/test.txt/0.0.txt.txt
+5940.11.txt	text.txt	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/A/text.txt/5940.11.txt.txt
+168.2.txt	H.txt	E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/H.txt/168.2.txt.txt

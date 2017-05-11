@@ -1,6 +1,12 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -196,7 +202,9 @@ public class Repository {
 			
 				for (String file:files) {
 					if (aNames.containsKey(file)) {
-						File srcFile = new File(src, file + File.separator + aNames.get(file));
+						String fname = aNames.get(file).toString();
+						File srcFile = new File(src, file + File.separator
+								+ aNames.get(file) + fname.substring(fname.length()-4));
 						File destFile = new File(dest, file);
 						copyDirectory(srcFile, destFile, mF, fNames, aNames);
 					} else {
@@ -211,7 +219,7 @@ public class Repository {
 
 		} else {
 			System.out.println(src);
-			System.out.println(dest.getParent());
+			System.out.println(dest);
 			/*Artifact artifact = new Artifact(src, dest);
 			if(!artifact.exists()) {
 				System.out.println("File copied from " + 
@@ -220,6 +228,31 @@ public class Repository {
 			}
 			
 			mF.addArtifact(artifact);*/
+
+			
+			try {
+				InputStream in = new FileInputStream(src);
+				//File file = new File(dest);
+				OutputStream out = new FileOutputStream(dest.getAbsolutePath());
+				
+				byte[] buffer = new byte[1024];
+				int length;
+				
+				while ((length = in.read(buffer)) > 0) {
+					out.write(buffer, 0, length);
+				}
+				
+				in.close();
+				out.close();
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}
