@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 /*
@@ -85,8 +86,9 @@ public class Repository {
 		System.out.println("Checking out...");
 		List<String> lines;
 		List<String> fNames = new ArrayList<String>();
-		
+		Hashtable<String, String> artifactNames = new Hashtable<String, String>();
 		ManifestFields mFs = new ManifestFields();
+		
 		String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm")
 				.format(new java.util.Date());
 		
@@ -112,6 +114,9 @@ public class Repository {
 				//System.out.println(line);
 				//System.out.println(words[0]);
 				fNames.add(words[0]);
+				if(words.length>2) {
+					artifactNames.put(words[1], words[0]);
+				}
 			}
 			count++;
 		}
@@ -126,7 +131,7 @@ public class Repository {
 			System.out.println(new File(test).getName());
 		}*/
 		fNames.add(new File(src).getName());
-		copyDirectory(new File(src), new File(dest), mFs, fNames);
+		copyDirectory(new File(src), new File(dest), mFs, fNames, artifactNames);
 		System.out.println("Check-out Complete!");
 	}
 	
@@ -171,7 +176,8 @@ public class Repository {
 	/*
 	 * Method that copies source directory to destination directory
 	 */
-	public void copyDirectory(File src, File dest, ManifestFields mF, List<String> fNames) {
+	public void copyDirectory(File src, File dest, ManifestFields mF,
+			List<String> fNames, Hashtable aNames) {
 
 		if(src.isDirectory()) {
 			
@@ -189,24 +195,31 @@ public class Repository {
 				String files[] = src.list();
 			
 				for (String file:files) {
+					if (aNames.containsKey(file)) {
+						File srcFile = new File(src, file + File.separator + aNames.get(file));
+						File destFile = new File(dest, file);
+						copyDirectory(srcFile, destFile, mF, fNames, aNames);
+					} else {
+						File srcFile = new File(src, file);
+						File destFile = new File(dest, file);
+						copyDirectory(srcFile, destFile, mF, fNames, aNames);	
+					}
 				
-					File srcFile = new File(src, file);
-					File destFile = new File(dest, file);
-				
-					copyDirectory(srcFile, destFile, mF, fNames);
+					
 				}
 			}
 
 		} else {
-
-			Artifact artifact = new Artifact(src, dest);
+			System.out.println(src);
+			System.out.println(dest.getParent());
+			/*Artifact artifact = new Artifact(src, dest);
 			if(!artifact.exists()) {
 				System.out.println("File copied from " + 
 				artifact.getSourceFile().getPath() + " to " +
 				artifact.getFile().getPath());
 			}
 			
-			mF.addArtifact(artifact);
+			mF.addArtifact(artifact);*/
 		}
 		
 	}

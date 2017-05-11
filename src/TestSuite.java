@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class TestSuite {
@@ -17,6 +18,7 @@ public class TestSuite {
 	public static void testCheckOut() {
 		List<String> lines;
 		List<String> Names;
+		Hashtable fileNames = new Hashtable();
 		//File test = new File("E:\\Users\\John\\Desktop\\Dropbox\\CECS 543\\Project\\src\\..\\destTest\\A");
 		//System.out.println(test.getAbsolutePath().replaceAll("\\\\", "/"));
 		//new File("E:/Users/John/Desktop/Dropbox/CECS 543/Project/src/../destTest/A/C").mkdir();
@@ -37,13 +39,16 @@ public class TestSuite {
 			String [] words = line.split("\t");
 			if(count>5) {
 				//System.out.println(line);
-				System.out.println(words[0]);
-				System.out.println(words[1]);
+				//System.out.println(words[0]);
+				//System.out.println(words[1]);
 				if(words.length>2)
-					System.out.println(words[2]);
+					System.out.println(words[0] + " " + words[1]);
+					fileNames.put(words[1], words[0]);
 			}
 			count++;
 		}
+		
+		System.out.println(fileNames.get("test.txt"));
 	}
 	
 	public static void testArtifact() {
