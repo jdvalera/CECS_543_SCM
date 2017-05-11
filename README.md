@@ -50,6 +50,22 @@ javac Repository.java
 ```
 java Repository check-in ../sourcePath ../destPath
 ```
+
+## Checking out files
+
+1. Copy the files listed above into a directory
+2. Go into the directory that you copied the files to
+3. Compile Repository.java
+
+```
+javac Repository.java
+```
+4. Run the Repository class with the first argument as `check-out`, the second argument is the source directory path, the third argument is the destination directory path, and the fourth argument is the manifest date.
+
+```
+java Repository check-out ../repoPath ../destPath 05-10-2017-20-22
+```
+
 ## Running on Eclipse
 
 1. Clone the repository
