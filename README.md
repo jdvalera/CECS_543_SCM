@@ -74,7 +74,7 @@ java Repository check-out ../repoPath ../destPath 05-10-2017-20-22
 4. Running the folder will create a directory `destTest` in the project directory
 
 ## Bugs
-If you are using Windows file paths, you will have to use double slashes '//' instead of single slashes '/' in the command.
+If you are using Windows file paths, you will have to use double slashes '\\' instead of single slashes '\' in the command.
 
 For example, instead of writing:
 ```
