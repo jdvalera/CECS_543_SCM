@@ -238,11 +238,9 @@ public class Repository {
 
 		} else {
 			Artifact artifact = new Artifact(src, dest, true);
-			if(!artifact.exists()) {
-				System.out.println("File copied from " + 
-				artifact.getSourceFile().getPath() + " to " +
-				artifact.getFile().getPath());
-			}
+			
+			System.out.println("File copied from " + 
+				src + " to " + dest);
 			
 			mF.addArtifact(artifact);		
 		}
