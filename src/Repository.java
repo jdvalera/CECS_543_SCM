@@ -70,6 +70,11 @@ public class Repository {
 		copyDirectory(new File(args[1]), new File (args[2]), mF);
 		Manifest m = new Manifest(mF);
 		System.out.println("Repository Created!");
+		} else {
+			System.out.println("Command failed.");
+			System.out.println("Use following format:");
+			System.out.println("java Repository [cmd] [src] [dest]"
+					+ " (for checkout) [Date: MM-DD-YYYY-HH-MM]");
 		}
 	}
 	
