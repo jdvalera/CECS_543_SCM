@@ -12,7 +12,19 @@ public class TestSuite {
 		//testRepository();
 		//Repository r = new Repository();
 		//r.create();
-		testCheckOut();
+		//testCheckOut();
+		testCase1();
+	}
+	
+	public static void testCase1() {
+		//System.out.println(System.getProperty("user.dir")+File.separator+"mypt");
+		String testCase1[] = {"check-in", System.getProperty("user.dir")+File.separator+"mypt",
+				System.getProperty("user.dir")+File.separator+"mypt_repo"};
+		Repository r = new Repository(testCase1);
+	}
+	
+	public static void testCases() {
+		
 	}
 	
 	public static void testCheckOut() {
