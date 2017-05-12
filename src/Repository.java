@@ -48,7 +48,7 @@ public class Repository {
 		else if (args[0].equals("check-out")) {
 			if(args.length > 2)
 			  checkOut(args[1], args[2], args[3]);
-		} else
+		} else if (args[0].equals("create-repo"))
 		{
 		System.out.println("Creating Repository...");
 		
@@ -60,14 +60,14 @@ public class Repository {
 				.format(new java.util.Date());
 		
 		mF.setCreationTime(timeStamp);
-		mF.setUserCmd("java Repository " + args[0] + " " + args[1]);
-		mF.setSrcPath(args[0]);
-		mF.setTargetPath(args[1]);
+		mF.setUserCmd("java Repository " + args[0] + " " + args[1] + " " + args[2]);
+		mF.setSrcPath(args[1]);
+		mF.setTargetPath(args[2]);
 		mF.setFileName("Manifest-" + mTime + ".txt");
-		mF.setDirectory(new File(args[1] + File.separator + "activity"));
+		mF.setDirectory(new File(args[2] + File.separator + "activity"));
 		
 		path = args[1];
-		copyDirectory(new File(args[0]), new File (args[1]), mF);
+		copyDirectory(new File(args[1]), new File (args[2]), mF);
 		Manifest m = new Manifest(mF);
 		System.out.println("Repository Created!");
 		}
