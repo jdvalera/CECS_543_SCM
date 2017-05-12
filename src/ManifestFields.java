@@ -1,3 +1,19 @@
+/*
+ * Author: 
+ * John Valera
+ * Email: johnlemuelvalera@gmail.com
+ * 
+ * Co-authors:
+ * Jun Ying
+ * jun.ying@student.csulb.edu
+ * 
+ * Wei Wang
+ * Email: weiwang19871216@gmail.com
+ * 
+ * Description: This class is used to contain all the content for the 
+ *              manifest file. It is used to collect all data to pass
+ *              to the Manifest class.
+ */
 import java.io.File;
 import java.util.ArrayList;
 
@@ -5,7 +21,6 @@ import java.util.ArrayList;
  * Class responsible for storing all fields of the Manifest class
  * Has 2 constructors and getters and setters for all instance variables
  */
-
 public class ManifestFields {
 	
 	private String projectName = "Vix-1";
@@ -18,6 +33,9 @@ public class ManifestFields {
 	private ArrayList<String> directories;
 	private File directory;
 	
+	/*
+	 * Default constructor with default values.
+	 */
 	public ManifestFields() {
 
 		this.projectName = "Vix-1";
@@ -32,6 +50,9 @@ public class ManifestFields {
 		
 	}
 	
+	/*
+	 * Constructor with all values being provided. 
+	 */
 	public  ManifestFields(String cT, String uC, String sP, String tP,
 			String fN, ArrayList<Artifact> af, ArrayList<String> dirs,File dir) {
 		

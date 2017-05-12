@@ -1,3 +1,19 @@
+/*
+ * Author: 
+ * John Valera
+ * Email: johnlemuelvalera@gmail.com
+ * 
+ * Co-authors:
+ * Jun Ying
+ * jun.ying@student.csulb.edu
+ * 
+ * Wei Wang
+ * Email: weiwang19871216@gmail.com
+ * 
+ * Description: This class controls commands to and from the project Repository.
+ *              The constructor takes in arguments and does a 'create', 'check-in',
+ *              or 'check-out' depending on the arguments.
+ */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,17 +29,17 @@ import java.util.Hashtable;
 import java.util.List;
 
 /*
- * Class that represents the project tree created.
- */
-
-/*
- * Constructor that takes in cmd line args and creates the repository
+ * Class representing the Repository.
  */
 public class Repository {
 	
 	String path;	
 	private ManifestFields mF;
 	
+	/*
+	 * Constructor that takes in cmd line args and creates, checks in, or checks out
+	 * the repository.
+	 */
 	public Repository(String[] args) {
 		
 		if(args[0].equals("check-in")) {
@@ -117,30 +133,17 @@ public class Repository {
 		for(String line : lines) {
 			String [] words = line.split("\t");
 			if(count>5) {
-				//System.out.println(line);
-				//System.out.println(words[0]);
 				fNames.add(words[0]);
 				if(words.length>2) {
-					//System.out.println(words[0] + " " + words[1]);
 					artifactNames.put(words[1], words[0]);
 				}
 			}
 			count++;
 		}
-		/*
-		for(String f : fNames) {
-			System.out.println(f);
-		}*/
-		/*
-		String test = "E:/Users/John/Desktop/Dropbox/CECS 543/Project/sourceTest/A";
-		
-		if(fNames.contains(new File(test).getName())) {
-			System.out.println(new File(test).getName());
-		}*/
+
 		fNames.add(new File(src).getName());
 		copyDirectory(new File(src), new File(dest), mFs, fNames, artifactNames);
 		Manifest m = new Manifest(mFs);
-		//System.out.println(mFs.getArtifacts().get(1).getArtifactID());
 		System.out.println("Check-out Complete!");
 	}
 	
@@ -183,7 +186,9 @@ public class Repository {
 	}
 	
 	/*
-	 * Method that copies source directory to destination directory
+	 * Method that copies from repository to destination folder.
+	 * A List is used as a filter so that only files of a certain manifest is copied.
+	 * A Hashtable is used to get original file name from artifact ID.
 	 */
 	public void copyDirectory(File src, File dest, ManifestFields mF,
 			List<String> fNames, Hashtable aNames) {
@@ -234,37 +239,14 @@ public class Repository {
 				artifact.getFile().getPath());
 			}
 			
-			mF.addArtifact(artifact);
-			//System.out.println(mF.getArtifacts().get(0).getArtifactID());
-
-			/*
-			try {
-				InputStream in = new FileInputStream(src);
-				//File file = new File(dest);
-				OutputStream out = new FileOutputStream(dest.getAbsolutePath());
-				
-				byte[] buffer = new byte[1024];
-				int length;
-				
-				while ((length = in.read(buffer)) > 0) {
-					out.write(buffer, 0, length);
-				}
-				
-				in.close();
-				out.close();
-				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			
+			mF.addArtifact(artifact);		
 		}
 		
 	}
 	
+	/*
+	 * Method for reading a file and outputting a list of lines.
+	 */
 	public List<String> readFile(String filename) {
 		
 	  List<String> records = new ArrayList<String>();

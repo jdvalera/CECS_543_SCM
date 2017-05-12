@@ -1,3 +1,20 @@
+/*
+ * Author: 
+ * John Valera
+ * Email: johnlemuelvalera@gmail.com
+ * 
+ * Co-authors:
+ * Jun Ying
+ * jun.ying@student.csulb.edu
+ * 
+ * Wei Wang
+ * Email: weiwang19871216@gmail.com
+ * 
+ * Description: This class deals with all artifacts (files). It creates
+ *              an artifact ID and a leaf folder to store in the repository.
+ *              It copies files from the Repository into a destination folder
+ *              if checking out.
+ */
 import java.io.File;
 
 import java.io.FileInputStream;
@@ -10,7 +27,6 @@ import java.io.OutputStream;
 /*
  * Class representing the files (Artifacts)
  */
-
 public class Artifact {
 	
 	private String artifactID;
@@ -35,6 +51,11 @@ public class Artifact {
 		insertArtifact();
 	}
 	
+	/*
+	 * Constructor that takes in the src directory and destination directory and a boolean
+	 * Copies the files from Repository into the destination
+	 * Method is used for checkout
+	 */
 	public Artifact(File src, File dest, boolean checkout) {
 		this.sourceFile = src;
 		setID();
@@ -59,7 +80,6 @@ public class Artifact {
 			file = new File(leafFolder.getPath(), artifactID + "." + extension);
 			if(!file.exists()) { 
 				exists = false;
-			//System.out.println(artifactID + " created \n");
 			OutputStream out = new FileOutputStream(file);
 			
 			byte[] buffer = new byte[1024];
@@ -83,6 +103,9 @@ public class Artifact {
 		
 	}
 	
+	/*
+	 * Method for copying the file from Repository to destination folder
+	 */
 	public void checkoutArtifact() {
 		try {
 			InputStream in = new FileInputStream(sourceFile);

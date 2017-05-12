@@ -1,3 +1,19 @@
+/*
+ * Author: 
+ * John Valera
+ * Email: johnlemuelvalera@gmail.com
+ * 
+ * Co-authors:
+ * Jun Ying
+ * jun.ying@student.csulb.edu
+ * 
+ * Wei Wang
+ * Email: weiwang19871216@gmail.com
+ * 
+ * Description: This class is used used to create the actual manifest files.
+ *              It uses the ManifestFields class to extract the info it needs
+ *              for each manifest file.
+ */
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,7 +27,6 @@ import java.util.Collection;
 /*
  * Class responsible for creating the manifest file.
  */
-
 public class Manifest {
 	
 	ManifestFields manifestFields;
@@ -21,6 +36,10 @@ public class Manifest {
 	private ArrayList<String> directories;
 
 	
+	/*
+	 * Constructor that creates a manifest file.
+	 * Creates the 'activities' directory if it doesn't exist.
+	 */
 	public Manifest(ManifestFields mf) {
 		this.manifestFields = mf;
 		
@@ -30,6 +49,10 @@ public class Manifest {
 		createManifestFile();
 	}
 	
+	/*
+	 * Method that populates a string array to make up the content
+	 * of the manifest file.
+	 */
 	public ArrayList<String> createManifestContent() {
 		
 		String[] s = {projectName, 
@@ -43,9 +66,6 @@ public class Manifest {
 			String directory;
 			File dir = new File(d);
 			directory = dir.getName() + "\t" + dir.getAbsolutePath().replaceAll("\\\\", "/");
-			/*directory = d + " " + 
-			              new File(manifestFields.getSrcPath()).getAbsolutePath() + " "
-					    + new File(manifestFields.getTargetPath()).getAbsolutePath();*/
 			content.add(directory);
 		}
 
@@ -53,7 +73,6 @@ public class Manifest {
 			String artifact;
 			artifact = a.getArtifactID() + "\t" + a.getSourceFile().getName()
 					+ "\t" + a.getDestination().getAbsolutePath().replaceAll("\\\\", "/");
-			//+ a.getFile().getAbsolutePath().replaceAll("\\\\", "/");
 			content.add(artifact);
 		}
 		
@@ -61,6 +80,10 @@ public class Manifest {
 		return content;
 	}
 	
+	/*
+	 * Method that gets the contents from a string array and
+	 * creates the actual manifest file.
+	 */
 	public void createManifestFile() {
 		
 		BufferedWriter bw = null;
